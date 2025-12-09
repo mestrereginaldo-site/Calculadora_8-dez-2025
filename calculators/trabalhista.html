@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Calculadora Trabalhista - Calcule Rescisão, Férias e Horas Extras - Desenrola Direito</title>
+    <meta name="description" content="Calculadora trabalhista completa: calcule rescisão contratual, férias proporcionais, horas extras, 13º salário e todas as verbas trabalhistas de forma gratuita.">
+    
+    <!-- Schema.org para Calculator -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "Calculadora Trabalhista Desenrola Direito",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "Web",
+        "description": "Calculadora completa para cálculos trabalhistas",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "BRL"
+        }
+    }
+    </script>
+    
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/calculators.css">
+</head>
+<body>
+    <div id="header"></div>
+    
+    <main class="calculator-page">
+        <div class="container">
+            <!-- Breadcrumb -->
+            <nav class="breadcrumb">
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/calculators/">Calculadoras</a></li>
+                    <li>Calculadora Trabalhista</li>
+                </ul>
+            </nav>
+            
+            <div class="calculator-header">
+                <h1>Calculadora Trabalhista Completa</h1>
+                <p class="subtitle">Calcule todas as verbas rescisórias de forma precisa e gratuita</p>
+                
+                <div class="calculator-warning">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <p><strong>Atenção:</strong> Esta calculadora fornece uma estimativa. Para cálculos oficiais, consulte um contador ou advogado trabalhista.</p>
+                </div>
+            </div>
+            
+            <div class="calculator-container">
+                <!-- Menu de Cálculos -->
+                <div class="calculator-menu">
+                    <button class="calc-tab active" data-tab="rescisao">Rescisão</button>
+                    <button class="calc-tab" data-tab="ferias">Férias</button>
+                    <button class="calc-tab" data-tab="horas-extras">Horas Extras</button>
+                    <button class="calc-tab" data-tab="decimo-terceiro">13º Salário</button>
+                    <button class="calc-tab" data-tab="fgts">FGTS</button>
+                </div>
+                
+                <!-- Formulário de Cálculo de Rescisão -->
+                <div id="rescisao" class="calc-content active">
+                    <h2>Cálculo de Rescisão Contratual</h2>
+                    
+                    <form id="rescisao-form" class="calculator-form">
+                        <!-- Dados Básicos -->
+                        <div class="form-section">
+                            <h3><i class="fas fa-user"></i> Dados do Empregado</h3>
+                            
+                            <div class="form-grid">
+                                <div class="form-group">
+                                    <label for="salario">Salário Base (R$)</label>
+                                    <input type="number" id="salario" name="salario" min="0" step="0.01" required>
+                                    <span class="help-text">Salário mensal sem descontos</span>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="data-admissao">Data de Admissão</label>
+                                    <input type="date" id="data-admissao" name="data-admissao" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="data-demissao">Data de Demissão</label>
+                                    <input type="date" id="data-demissao" name="data-demissao" required>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Tipo de Rescisão -->
+                        <div class="form-section">
+                            <h3><i class="fas fa-file-contract"></i> Tipo de Rescisão</h3>
+                            
+                            <div class="radio-group">
+                                <label class="radio-label">
+                                    <input type="radio" name="tipo-rescisao" value="sem-justa-causa" checked>
+                                    <span>Demissão sem justa causa (pelo empregador)</span>
+                                </label>
+                                
+                                <label class="radio-label">
+                                    <input type="radio" name="tipo-rescisao" value="pedido-demissao">
+                                    <span>Pedido de demissão (pelo empregado)</span>
+                                </label>
+                                
+                                <label class="radio-label">
+                                    <input type="radio" name="tipo-rescisao" value="justa-causa">
+                                    <span>Demissão por justa causa</span>
+                                </label>
+                                
+                                <label class="radio-label">
+                                    <input type="radio" name="tipo-rescisao" value="termino-contrato">
+                                    <span>Término de contrato por prazo determinado</span>
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <!-- Direitos Adicionais -->
+                        <div class="form-section">
+                            <h3><i class="fas fa-plus-circle"></i> Direitos Adicionais</h3>
+                            
+                            <div class="checkbox-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="ferias-vencidas" id="ferias-vencidas">
+                                    <span>Férias vencidas e não gozadas</span>
+                                </label>
+                                
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="ferias-proporcionais" id="ferias-proporcionais" checked>
+                                    <span>Férias proporcionais</span>
+                                </label>
+                                
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="decimo-terceiro" id="decimo-terceiro" checked>
+                                    <span>13º salário proporcional</span>
+                                </label>
+                                
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="aviso-previo" id="aviso-previo" checked>
+                                    <span>Aviso prévio trabalhado/indenizado</span>
+                                </label>
+                                
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="horas-extras" id="horas-extras">
+                                    <span>Horas extras não pagas</span>
+                                </label>
+                                
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="adicional-noturno" id="adicional-noturno">
+                                    <span>Adicional noturno</span>
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <!-- Horas Extras (se selecionado) -->
+                        <div id="horas-extras-section" class="form-section" style="display: none;">
+                            <h3><i class="fas fa-clock"></i> Horas Extras</h3>
+                            
+                            <div class="form-grid">
+                                <div class="form-group">
+                                    <label for="horas-mes">Horas extras por mês</label>
+                                    <input type="number" id="horas-mes" name="horas-mes" min="0" value="0">
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="percentual-he">Percentual de horas extras</label>
+                                    <select id="percentual-he" name="percentual-he">
+                                        <option value="50">50% (comum)</option>
+                                        <option value="100">100% (domingos/feriados)</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="meses-he">Número de meses com horas extras</label>
+                                    <input type="number" id="meses-he" name="meses-he" min="0" value="0">
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Botão Calcular -->
+                        <div class="form-actions">
+                            <button type="button" id="calcular-rescisao" class="btn-primary">
+                                <i class="fas fa-calculator"></i> Calcular Rescisão
+                            </button>
+                            <button type="button" id="limpar-form" class="btn-secondary">
+                                <i class="fas fa-redo"></i> Limpar
+                            </button>
+                        </div>
+                    </form>
+                    
+                    <!-- Resultados -->
+                    <div id="resultados-rescisao" class="calculator-results" style="display: none;">
+                        <h3><i class="fas fa-file-invoice-dollar"></i> Resultado do Cálculo</h3>
+                        
+                        <div class="results-summary">
+                            <div class="total-amount">
+                                <h4>Total a Receber:</h4>
+                                <div class="amount" id="total-rescisao">R$ 0,00</div>
+                            </div>
+                            
+                            <div class="breakdown">
+                                <h5>Detalhamento das Verbas:</h5>
+                                <table class="results-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Descrição</th>
+                                            <th>Valor</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="verbas-detalhes">
+                                        <!-- Preenchido por JavaScript -->
+                                    </tbody>
+                                    <tfoot>
+                                        <tr>
+                                            <th>TOTAL</th>
+                                            <th id="total-geral">R$ 0,00</th>
+                                        </tr>
+                                    </tfoot>
+                                </table>
+                            </div>
+                        </div>
+                        
+                        <!-- Informações Importantes -->
+                        <div class="results-info">
+                            <div class="info-box">
+                                <h5><i class="fas fa-info-circle"></i> Informações Importantes</h5>
+                                <ul>
+                                    <li>Os valores são estimativas baseadas na CLT</li>
+                                    <li>Multa do FGTS: 40% sobre saldo do FGTS (em caso de demissão sem justa causa)</li>
+                                    <li>Prazo para pagamento: até 10 dias da rescisão</li>
+                                    <li>Consulte um advogado trabalhista para cálculo oficial</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="info-box">
+                                <h5><i class="fas fa-download"></i> Recursos Adicionais</h5>
+                                <div class="resources">
+                                    <a href="/downloads/modelos/recibo-rescisao.pdf" class="resource-link">
+                                        <i class="far fa-file-pdf"></i> Modelo de Recibo de Rescisão
+                                    </a>
+                                    <a href="/artigos/direito-trabalhista/rescisao-contratual.html" class="resource-link">
+                                        <i class="far fa-newspaper"></i> Artigo: Guia Completo de Rescisão
+                                    </a>
+                                    <a href="/calculators/ferias.html" class="resource-link">
+                                        <i class="fas fa-calculator"></i> Calculadora de Férias
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Compartilhamento -->
+                        <div class="share-results">
+                            <p>Compartilhar cálculo:</p>
+                            <div class="share-buttons">
+                                <button class="share-btn whatsapp" data-share="whatsapp">
+                                    <i class="fab fa-whatsapp"></i> WhatsApp
+                                </button>
+                                <button class="share-btn email" data-share="email">
+                                    <i class="far fa-envelope"></i> E-mail
+                                </button>
+                                <button class="share-btn print" onclick="window.print()">
+                                    <i class="fas fa-print"></i> Imprimir
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Outras abas de cálculo -->
+                <div id="ferias" class="calc-content">
+                    <!-- Conteúdo da calculadora de férias -->
+                </div>
+                
+                <!-- Mais conteúdo das outras calculadoras -->
+            </div>
+            
+            <!-- Explicação Legal -->
+            <div class="legal-explanation">
+                <h3><i class="fas fa-scale-balanced"></i> Base Legal dos Cálculos</h3>
+                
+                <div class="legal-cards">
+                    <div class="legal-card">
+                        <h4>Saldo de Salário</h4>
+                        <p><strong>Art. 7º, XXXVI da CF/88:</strong> Proporcional aos dias trabalhados no mês da rescisão.</p>
+                        <code>(Salário / 30) × dias trabalhados</code>
+                    </div>
+                    
+                    <div class="legal-card">
+                        <h4>Férias Proporcionais</h4>
+                        <p><strong>Art. 130 da CLT:</strong> Direito a 1/12 por mês de trabalho no ano.</p>
+                        <code>(Salário / 12) × meses trabalhados</code>
+                    </div>
+                    
+                    <div class="legal-card">
+                        <h4>13º Salário Proporcional</h4>
+                        <p><strong>Lei 4.090/1962:</strong> Direito a 1/12 por mês trabalhado no ano.</p>
+                        <code>(Salário / 12) × meses trabalhados</code>
+                    </div>
+                    
+                    <div class="legal-card">
+                        <h4>Multa do FGTS</h4>
+                        <p><strong>Lei 8.036/1990:</strong> 40% sobre saldo do FGTS em demissão sem justa causa.</p>
+                        <code>Saldo FGTS × 40%</code>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- FAQ da Calculadora -->
+            <div class="calculator-faq">
+                <h3>Perguntas Frequentes sobre Cálculo Trabalhista</h3>
+                
+                <div class="faq-grid">
+                    <div class="faq-item">
+                        <h4>Quanto tempo tenho para receber minhas verbas rescisórias?</h4>
+                        <p>O prazo máximo é de <strong>10 dias corridos</strong> contados a partir da data da rescisão, conforme Art. 477 da CLT.</p>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <h4>Como é calculado o aviso prévio?</h4>
+                        <p>O aviso prévio é de <strong>30 dias + 3 dias por ano trabalhado</strong> (limitado a 90 dias). Pode ser trabalhado ou indenizado.</p>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <h4>Tenho direito ao seguro-desemprego?</h4>
+                        <p>Sim, se foi demitido sem justa causa e cumpriu os requisitos: tempo mínimo de trabalho nos últimos 36 meses.</p>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <h4>O que acontece com meu FGTS?</h4>
+                        <p>Em demissão sem justa causa: multa de 40% para você + liberação do saldo total. Em pedido de demissão: apenas o saldo (sem multa).</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <div id="footer"></div>
+    
+    <script src="/js/calculators.js"></script>
+    <script>
+        // Cálculo de Rescisão
+        document.getElementById('calcular-rescisao').addEventListener('click', function() {
+            calcularRescisao();
+        });
+        
+        // Mostrar/ocultar seção de horas extras
+        document.getElementById('horas-extras').addEventListener('change', function() {
+            document.getElementById('horas-extras-section').style.display = 
+                this.checked ? 'block' : 'none';
+        });
+        
+        // Abas da calculadora
+        document.querySelectorAll('.calc-tab').forEach(tab => {
+            tab.addEventListener('click', function() {
+                const tabId = this.getAttribute('data-tab');
+                
+                // Remover active de todas as abas e conteúdos
+                document.querySelectorAll('.calc-tab, .calc-content').forEach(el => {
+                    el.classList.remove('active');
+                });
+                
+                // Adicionar active na aba clicada e conteúdo correspondente
+                this.classList.add('active');
+                document.getElementById(tabId).classList.add('active');
+            });
+        });
+        
+        function calcularRescisao() {
+            // Obter valores do formulário
+            const salario = parseFloat(document.getElementById('salario').value) || 0;
+            const dataAdmissao = new Date(document.getElementById('data-admissao').value);
+            const dataDemissao = new Date(document.getElementById('data-demissao').value);
+            const tipoRescisao = document.querySelector('input[name="tipo-rescisao"]:checked').value;
+            
+            // Calcular meses trabalhados
+            const mesesTrabalhados = Math.floor((dataDemissao - dataAdmissao) / (1000 * 60 * 60 * 24 * 30.44));
+            
+            // Inicializar verbas
+            let verbas = [];
+            let total = 0;
+            
+            // Saldo de salário (último mês proporcional)
+            const diasTrabalhados = Math.floor((dataDemissao - dataAdmissao) / (1000 * 60 * 60 * 24)) % 30;
+            const saldoSalario = (salario / 30) * diasTrabalhados;
+            verbas.push({ descricao: 'Saldo de salário', valor: saldoSalario });
+            total += saldoSalario;
+            
+            // Férias proporcionais
+            if (document.getElementById('ferias-proporcionais').checked) {
+                const feriasProporcionais = (salario / 12) * mesesTrabalhados;
+                verbas.push({ descricao: 'Férias proporcionais', valor: feriasProporcionais });
+                total += feriasProporcionais;
+            }
+            
+            // 13º proporcional
+            if (document.getElementById('decimo-terceiro').checked) {
+                const decimoTerceiro = (salario / 12) * mesesTrabalhados;
+                verbas.push({ descricao: '13º salário proporcional', valor: decimoTerceiro });
+                total += decimoTerceiro;
+            }
+            
+            // Aviso prévio (se demissão sem justa causa)
+            if (document.getElementById('aviso-previo').checked && tipoRescisao === 'sem-justa-causa') {
+                const avisoPrevio = salario;
+                verbas.push({ descricao: 'Aviso prévio indenizado', valor: avisoPrevio });
+                total += avisoPrevio;
+            }
+            
+            // Multa do FGTS (40% - apenas em demissão sem justa causa)
+            if (tipoRescisao === 'sem-justa-causa') {
+                // Estimativa do saldo do FGTS (8% do salário por mês)
+                const saldoFGTS = salario * 0.08 * mesesTrabalhados;
+                const multaFGTS = saldoFGTS * 0.4;
+                verbas.push({ descricao: 'Multa do FGTS (40%)', valor: multaFGTS });
+                total += multaFGTS;
+            }
+            
+            // Atualizar tabela de resultados
+            const tbody = document.getElementById('verbas-detalhes');
+            tbody.innerHTML = '';
+            
+            verbas.forEach(verba => {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td>${verba.descricao}</td>
+                    <td>R$ ${verba.valor.toFixed(2).replace('.', ',')}</td>
+                `;
+                tbody.appendChild(tr);
+            });
+            
+            // Atualizar totais
+            document.getElementById('total-rescisao').textContent = 
+                `R$ ${total.toFixed(2).replace('.', ',')}`;
+            document.getElementById('total-geral').textContent = 
+                `R$ ${total.toFixed(2).replace('.', ',')}`;
+            
+            // Mostrar resultados
+            document.getElementById('resultados-rescisao').style.display = 'block';
+        }
+    </script>
+</body>
+</html>
