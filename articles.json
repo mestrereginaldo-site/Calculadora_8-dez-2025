@@ -1,0 +1,72 @@
+{
+  "articles": [
+    {
+      "id": 1,
+      "title": "Compras Online: Seus Direitos ao Realizar Transações pela Internet",
+      "slug": "compras-online",
+      "category": "Direito do Consumidor",
+      "date": "2025-10-02",
+      "readTime": 15,
+      "wordCount": 3240,
+      "excerpt": "Guia completo sobre direitos do consumidor em compras online, incluindo direito de arrependimento, garantias, prazos de entrega, responsabilidade do fornecedor...",
+      "content": "<!-- Conteúdo completo do artigo com mais de 3000 palavras -->",
+      "tags": ["consumidor", "e-commerce", "direito de arrependimento", "CDC", "PROCON"],
+      "metaDescription": "Guia completo sobre direitos do consumidor em compras online. Aprenda sobre direito de arrependimento, garantias, prazos e como reclamar.",
+      "featured": true
+    },
+    {
+      "id": 2,
+      "title": "Entendendo os Direitos do Consumidor na Era Digital",
+      "slug": "direitos-era-digital",
+      "category": "Direito do Consumidor",
+      "date": "2025-10-02",
+      "readTime": 18,
+      "wordCount": 3560,
+      "excerpt": "Análise completa sobre como a legislação brasileira protege consumidores em transações online e os desafios modernos como dados pessoais, LGPD...",
+      "content": "<!-- Conteúdo completo do artigo com mais de 3000 palavras -->",
+      "tags": ["LGPD", "dados pessoais", "era digital", "fintechs", "marketplaces"],
+      "metaDescription": "Análise completa sobre proteção do consumidor na era digital. LGPD, dados pessoais, fintechs e muito mais.",
+      "featured": true
+    },
+    {
+      "id": 3,
+      "title": "Reforma Trabalhista: Mudanças e Impactos Práticos para Empregados e Empregadores",
+      "slug": "reforma-trabalhista",
+      "category": "Direito Trabalhista",
+      "date": "2025-10-02",
+      "readTime": 22,
+      "wordCount": 4100,
+      "excerpt": "Um guia completo sobre as alterações na CLT introduzidas pela reforma trabalhista e como elas afetam empregadores e empregados no dia a dia...",
+      "content": "<!-- Conteúdo completo do artigo com mais de 3000 palavras -->",
+      "tags": ["reforma trabalhista", "CLT", "home office", "banco de horas", "TST"],
+      "metaDescription": "Guia completo sobre a reforma trabalhista. Entenda as mudanças na CLT e impactos para empregados e empregadores.",
+      "featured": true
+    }
+  ],
+  "categories": [
+    {
+      "name": "Direito do Consumidor",
+      "slug": "direito-consumidor",
+      "description": "Proteção nas relações de consumo online e offline",
+      "articleCount": 15
+    },
+    {
+      "name": "Direito Trabalhista",
+      "slug": "direito-trabalhista",
+      "description": "Direitos e deveres nas relações de trabalho",
+      "articleCount": 12
+    },
+    {
+      "name": "Direito Civil",
+      "slug": "direito-civil",
+      "description": "Contratos, família, propriedade e obrigações",
+      "articleCount": 18
+    },
+    {
+      "name": "Direito Constitucional",
+      "slug": "direito-constitucional",
+      "description": "Direitos fundamentais e garantias constitucionais",
+      "articleCount": 8
+    }
+  ]
+}
