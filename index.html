@@ -33,11 +33,6 @@
     <!-- CANONICAL URL -->
     <link rel="canonical" href="https://medindeniz.com.br" />
     
-    <!-- ALTERNATE LANGUAGES (se tiver) -->
-    <link rel="alternate" hreflang="pt-BR" href="https://medindeniz.com.br" />
-    <link rel="alternate" hreflang="pt" href="https://medindeniz.com.br" />
-    <link rel="alternate" hreflang="x-default" href="https://medindeniz.com.br" />
-    
     <!-- OPEN GRAPH (Facebook, LinkedIn, WhatsApp) -->
     <meta property="og:title" content="MedIndeniz | Calculadora de Indenização por Erro Médico 2025">
     <meta property="og:description" content="Descubra quanto você pode receber por erro médico em apenas 1 minuto. Advogados especializados com +100 casos resolvidos.">
@@ -56,36 +51,18 @@
     <meta name="twitter:description" content="Calcule GRATUITAMENTE sua indenização por erro médico. Advogados especializados. Consulta sem custo.">
     <meta name="twitter:image" content="https://medindeniz.com.br/assets/twitter-card.jpg">
     <meta name="twitter:image:alt" content="MedIndeniz - Advogados Especializados">
-    <meta name="twitter:site" content="@medindeniz">
-    <meta name="twitter:creator" content="@medindeniz">
     
     <!-- APPLE/IOS METAS -->
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="apple-mobile-web-app-title" content="MedIndeniz">
     <meta name="format-detection" content="telephone=yes">
-    
-    <!-- MICROSOFT/EDGE -->
-    <meta name="msapplication-TileColor" content="#1E293B">
-    <meta name="msapplication-TileImage" content="/assets/mstile-144x144.png">
-    <meta name="msapplication-config" content="/browserconfig.xml">
-    <meta name="application-name" content="MedIndeniz">
     
     <!-- ANDROID/CHROME -->
     <meta name="theme-color" content="#1E293B">
-    <meta name="mobile-web-app-capable" content="yes">
     
-    <!-- PWA MANIFEST -->
-    <link rel="manifest" href="/manifest.json">
+    <!-- FAVICONS -->
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
     
-    <!-- FAVICONS (todas versões) -->
-    <link rel="icon" type="image/x-icon" href="/favicon.ico">
-    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
-    <link rel="mask-icon" href="/assets/safari-pinned-tab.svg" color="#1E293B">
-    
-    <!-- FONTS -->
+    <!-- FONTS (mantenha suas fonts) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
@@ -102,123 +79,7 @@
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-      
-      // Configuração principal do GA4
-      gtag('config', 'G-H0H7BBQ3F6', {
-        'page_title': document.title,
-        'page_location': window.location.href,
-        'page_path': window.location.pathname
-      });
-      
-      // Rastreamento avançado para site jurídico
-      document.addEventListener('DOMContentLoaded', function() {
-        
-        // 1. CLIQUE EM WHATSAPP/LIGAÇÃO (para advogados)
-        document.querySelectorAll('a[href*="whatsapp"], a[href*="wa.me"], a[href*="tel:"]').forEach(link => {
-          link.addEventListener('click', function() {
-            const tipo = this.href.includes('whatsapp') ? 'whatsapp' : 'telefone';
-            gtag('event', 'contato_clique', {
-              'event_category': 'conversao',
-              'event_label': 'Clique ' + tipo + ' - ' + this.textContent.substring(0, 30),
-              'method': tipo
-            });
-            console.log('GA4: Clique em ' + tipo + ' rastreado');
-          });
-        });
-        
-        // 2. FORMULÁRIOS DE CONTATO (para orçamentos)
-        document.querySelectorAll('form').forEach(form => {
-          form.addEventListener('submit', function(e) {
-            // Espera um pouco para garantir que o envio foi iniciado
-            setTimeout(() => {
-              gtag('event', 'formulario_enviado', {
-                'event_category': 'lead',
-                'event_label': 'Formulário: ' + (this.id || 'sem-id'),
-                'form_name': this.id || 'formulario'
-              });
-              console.log('GA4: Formulário enviado rastreado');
-            }, 500);
-          });
-        });
-        
-        // 3. DOWNLOADS DE MATERIAIS (e-books, modelos, etc.)
-        document.querySelectorAll('a[href*=".pdf"], a[href*=".doc"], a[href*="download"]').forEach(link => {
-          link.addEventListener('click', function() {
-            const arquivo = this.href.split('/').pop() || 'arquivo';
-            gtag('event', 'download_material', {
-              'event_category': 'material',
-              'event_label': 'Download: ' + arquivo,
-              'file_name': arquivo
-            });
-            console.log('GA4: Download rastreado: ' + arquivo);
-          });
-        });
-        
-        // 4. CLIQUE EM SERVIÇOS ESPECÍFICOS
-        document.querySelectorAll('a[href*="servico"], a[href*="area"], .servico-item, .area-atuacao').forEach(link => {
-          link.addEventListener('click', function() {
-            const servico = this.textContent.trim().substring(0, 40);
-            gtag('event', 'servico_clique', {
-              'event_category': 'navegacao',
-              'event_label': 'Serviço: ' + servico,
-              'service_name': servico
-            });
-            console.log('GA4: Clique em serviço rastreado: ' + servico);
-          });
-        });
-        
-        // 5. CLIQUE EM "AGENDE CONSULTA" ou similares
-        document.querySelectorAll('.btn-agendar, .btn-consulta, .btn-orcamento, .cta-button').forEach(button => {
-          button.addEventListener('click', function() {
-            gtag('event', 'agendamento_clique', {
-              'event_category': 'conversao',
-              'event_label': 'Agendamento: ' + this.textContent.trim().substring(0, 30)
-            });
-            console.log('GA4: Clique em agendamento rastreado');
-          });
-        });
-        
-        // 6. ROLAGEM PROFUNDA (engajamento)
-        let scrollRastreado = false;
-        window.addEventListener('scroll', function() {
-          if (!scrollRastreado && window.scrollY > window.innerHeight * 2) {
-            gtag('event', 'rolagem_profunda', {
-              'event_category': 'engajamento',
-              'event_label': 'Rolagem > 2x altura da tela'
-            });
-            scrollRastreado = true;
-            console.log('GA4: Rolagem profunda rastreada');
-          }
-        });
-        
-        // 7. TEMPO NA PÁGINA (aprox.)
-        setTimeout(() => {
-          gtag('event', 'tempo_pagina_30s', {
-            'event_category': 'engajamento',
-            'event_label': '30 segundos na página'
-          });
-          console.log('GA4: 30 segundos na página');
-        }, 30000);
-        
-        // 8. SAÍDA DA PÁGINA (tentativa de fechar/abandonar)
-        window.addEventListener('beforeunload', function() {
-          gtag('event', 'tentativa_saida', {
-            'event_category': 'comportamento',
-            'event_label': 'Usuário tentou sair'
-          });
-        });
-        
-      });
-      
-      // 9. ERROS NO SITE (para monitoramento)
-      window.addEventListener('error', function(e) {
-        gtag('event', 'erro_javascript', {
-          'event_category': 'erro',
-          'event_label': e.message.substring(0, 100),
-          'error_url': window.location.href
-        });
-      });
-      
+      gtag('config', 'G-H0H7BBQ3F6');
     </script>
     
     <!-- CSS Reset para garantir consistência entre navegadores -->
@@ -232,169 +93,83 @@
         background-color: #1E293B;
         min-height: 100vh;
         font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Montserrat', sans-serif;
+        color: white;
       }
       
-      /* Esconder elementos intermitentes durante o carregamento */
-      .hide-flash {
-        visibility: hidden;
+      /* Loading screen para React */
+      #root {
+        min-height: 100vh;
+      }
+      
+      .react-loading {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        flex-direction: column;
+        gap: 20px;
+      }
+      
+      .react-loading-spinner {
+        width: 50px;
+        height: 50px;
+        border: 5px solid rgba(255,255,255,0.3);
+        border-radius: 50%;
+        border-top-color: #fff;
+        animation: spin 1s linear infinite;
+      }
+      
+      @keyframes spin {
+        to { transform: rotate(360deg); }
       }
       
       html {
         scroll-behavior: smooth;
       }
     </style>
-  </head>
-  <body>
-    <div id="root"></div>
+</head>
+<body>
+    <!-- Loading screen que será substituída pelo React -->
+    <div id="root">
+        <div class="react-loading">
+            <div class="react-loading-spinner"></div>
+            <p>Carregando MedIndeniz...</p>
+        </div>
+    </div>
+    
+    <!-- SEU REACT AQUI (não altere) -->
     <script type="module" src="/src/main.tsx"></script>
     
-    <!-- SCHEMA MARKUP ESPECÍFICO PARA ADVOCACIA DE ERRO MÉDICO -->
+    <!-- SCHEMA MARKUP SIMPLIFICADO PARA SEO -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@graph": [
-        {
-          "@type": "LegalService",
-          "@id": "https://medindeniz.com.br/#legalservice",
-          "name": "MedIndeniz - Advogados Especializados em Erro Médico",
-          "description": "Escritório de advocacia especializado em indenização por erro médico, negligência hospitalar e danos à saúde. +100 casos resolvidos.",
-          "url": "https://medindeniz.com.br",
-          "logo": "https://medindeniz.com.br/assets/logo-medindeniz.svg",
-          "telephone": "+5571996510966",
-          "email": "contato@medindeniz.com.br",
-          "address": {
-            "@type": "PostalAddress",
-            "streetAddress": "Av. Paulista, 1000",
-            "addressLocality": "São Paulo",
-            "addressRegion": "SP",
-            "postalCode": "01310-100",
-            "addressCountry": "BR"
-          },
-          "geo": {
-            "@type": "GeoCoordinates",
-            "latitude": "-23.563987",
-            "longitude": "-46.653279"
-          },
-          "openingHours": "Mo-Fr 08:00-18:00, Sa 09:00-13:00",
-          "areaServed": ["BR"],
-          "serviceType": [
-            "Erro Médico",
-            "Negligência Hospitalar", 
-            "Danos Morais Saúde",
-            "Processo contra Hospital",
-            "Indenização por Morte",
-            "Erro em Cirurgia",
-            "Diagnóstico Errado"
-          ],
-          "priceRange": "R$ 10.000 - R$ 1.000.000",
-          "hasOfferCatalog": {
-            "@type": "OfferCatalog",
-            "name": "Serviços Jurídicos",
-            "itemListElement": [
-              {
-                "@type": "Offer",
-                "itemOffered": {
-                  "@type": "Service",
-                  "name": "Consulta Gratuita",
-                  "description": "Análise inicial do seu caso sem custo"
-                },
-                "price": "0",
-                "priceCurrency": "BRL"
-              },
-              {
-                "@type": "Offer",
-                "itemOffered": {
-                  "@type": "Service",
-                  "name": "Cálculo de Indenização",
-                  "description": "Estimativa do valor que você pode receber"
-                }
-              }
-            ]
-          },
-          "aggregateRating": {
-            "@type": "AggregateRating",
-            "ratingValue": "4.8",
-            "ratingCount": "127",
-            "bestRating": "5",
-            "worstRating": "1"
-          },
-          "sameAs": [
-            "https://facebook.com/medindeniz",
-            "https://instagram.com/medindeniz",
-            "https://linkedin.com/company/medindeniz",
-            "https://twitter.com/medindeniz"
-          ]
-        },
-        {
-          "@type": "WebSite",
-          "@id": "https://medindeniz.com.br/#website",
-          "url": "https://medindeniz.com.br",
-          "name": "MedIndeniz",
-          "description": "Calculadora de indenização por erro médico. Advogados especializados.",
-          "publisher": {
-            "@id": "https://medindeniz.com.br/#legalservice"
-          },
-          "potentialAction": [
-            {
-              "@type": "SearchAction",
-              "target": "https://medindeniz.com.br/search?q={search_term_string}",
-              "query-input": "required name=search_term_string"
-            }
-          ],
-          "inLanguage": "pt-BR"
-        },
-        {
-          "@type": "BreadcrumbList",
-          "@id": "https://medindeniz.com.br/#breadcrumb",
-          "itemListElement": [
-            {
-              "@type": "ListItem",
-              "position": 1,
-              "name": "Home",
-              "item": "https://medindeniz.com.br"
-            },
-            {
-              "@type": "ListItem",
-              "position": 2,
-              "name": "Calculadora de Indenização"
-            }
-          ]
-        },
-        {
-          "@type": "FAQPage",
-          "@id": "https://medindeniz.com.br/#faq",
-          "mainEntity": [
-            {
-              "@type": "Question",
-              "name": "Quanto tempo leva um processo por erro médico?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Em média, processos por erro médico podem levar de 2 a 4 anos para serem concluídos, dependendo da complexidade do caso e da localização do processo."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "Quanto posso receber de indenização por erro médico?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Os valores variam de R$ 10.000 a mais de R$ 1.000.000, dependendo da gravidade do erro, sequelas permanentes, danos morais e materiais comprovados."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "A consulta com advogado especializado é gratuita?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Sim, oferecemos consulta inicial gratuita para análise do seu caso e orientação sobre as possibilidades de indenização."
-              }
-            }
-          ]
-        }
-      ]
+      "@type": "LegalService",
+      "name": "MedIndeniz - Advogados Especializados em Erro Médico",
+      "description": "Calculadora gratuita de indenização por erro médico. Advogados especializados.",
+      "url": "https://medindeniz.com.br",
+      "telephone": "+5571996510966",
+      "areaServed": "BR",
+      "serviceType": "Erro Médico, Negligência Hospitalar, Indenização"
     }
     </script>
     
     <!-- This is a replit script which adds a banner on the top of the page when opened in development mode outside the replit environment -->
     <script type="text/javascript" src="https://replit.com/public/js/replit-dev-banner.js"></script>
-  </body>
+    
+    <!-- Script de rastreamento simplificado -->
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        // Rastreamento de cliques no WhatsApp
+        document.querySelectorAll('a[href*="whatsapp"], a[href*="wa.me"], a[href*="tel:"]').forEach(link => {
+          link.addEventListener('click', function() {
+            gtag('event', 'contato_clique', {
+              'event_category': 'conversao',
+              'event_label': 'Clique WhatsApp/Telefone'
+            });
+          });
+        });
+      });
+    </script>
+</body>
 </html>
