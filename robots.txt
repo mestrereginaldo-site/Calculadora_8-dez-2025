@@ -2,17 +2,23 @@ User-agent: *
 Allow: /
 Disallow: /admin/
 Disallow: /private/
-Disallow: /tmp/
 Disallow: /search?
+Crawl-delay: 1
 
 Sitemap: https://desenroladireito.com.br/sitemap.xml
 
 User-agent: Googlebot
 Allow: /
 Disallow: /admin/
+Crawl-delay: 0.5
 
 User-agent: Googlebot-News
 Allow: /
+Crawl-delay: 0.5
 
 User-agent: Googlebot-Image
 Allow: /
+Disallow: /*.gif$
+Disallow: /*.jpg$
+Disallow: /*.png$
+Disallow: /*.bmp$
